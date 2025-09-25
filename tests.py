@@ -1,13 +1,26 @@
-from functions.get_files_info import get_files_info, get_file_content, write_file
+from functions.get_files_info import get_files_info
+from functions.get_file_content import get_file_content
+from functions.write_file import write_file
+from functions.run_python_file import run_python_file
 
+text1 = run_python_file("calculator", "main.py") # (should print the calculator's usage instructions)
+print(text1)
+text2 = run_python_file("calculator", "main.py", ["3 + 5"]) # (should run the calculator... which gives a kinda nasty rendered result)
+print(text2)
+text3 = run_python_file("calculator", "tests.py")
+print(text3)
+text4 = run_python_file("calculator", "../main.py") # (this should return an error)
+print(text4)
+text5 = run_python_file("calculator", "nonexistent.py") # (this should return an error)
+print(text5)
 
-feedback1 = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
-feedback2 = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
-feedback3 = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
-
-print(feedback1)
-print(feedback2)
-print(feedback3)
+# feedback1 = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+# feedback2 = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
+# feedback3 = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
+#
+# print(feedback1)
+# print(feedback2)
+# print(feedback3)
 
 # res1 = get_files_info("calculator", ".")
 # res2 = get_files_info("calculator", "pkg")
